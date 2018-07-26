@@ -77,7 +77,7 @@ $(function() {
     });
 
     /* A test suite that tests the initial Feed load. */
-    xdescribe('Initial Entries', function() {
+    describe('Initial Entries', function() {
 
         jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
 
