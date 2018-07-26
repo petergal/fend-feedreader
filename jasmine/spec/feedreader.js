@@ -109,7 +109,7 @@ $(function() {
     /* A test suite that tests the selection of a new feed in the menu. */
     describe('New Feed Selection', function() {
 
-        jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
+        jasmine.DEFAULT_TIMEOUT_INTERVAL = 12000;
 
         let content_1, content_2;
 
@@ -119,15 +119,14 @@ $(function() {
             }, 3000);
             setTimeout(function() {
                 content_1 = $('.entry-link')[0].innerText;
-            }, 5000);
+            }, 6000);
             setTimeout(function() {
                 loadFeed(2);
-                content_2 = $('.entry-link')[0].innerText;
-            }, 6000);
+            }, 7000);
             setTimeout(function() {
                 content_2 = $('.entry-link')[0].innerText;
                 done();
-            }, 9000);
+            }, 10000);
         });
 
         /* This test ensures when a new feed is loaded
