@@ -25,7 +25,7 @@ var allFeeds = [
 ];
 
 /* This function starts up our application. The Google Feed
- * Reader API is loaded asynchonously and will then call this
+ * Reader API is loaded asynchronously and will then call this
  * function when the API is loaded.
  */
 function init() {
@@ -57,8 +57,12 @@ function init() {
                      entries = result.feed.entries,
                      entriesLen = entries.length,
                      entryTemplate = Handlebars.compile($('.tpl-entry').html());
+           // TODO delete testcode
+           // console.log("in loadFeed with parm "+ id + " - " + performance.now());
+           // console.log(entries);
 
-                 title.html(feedName);   // Set the header text
+
+           title.html(feedName);   // Set the header text
                  container.empty();      // Empty out all previous entries
 
                  /* Loop through the entries we just loaded via the Google

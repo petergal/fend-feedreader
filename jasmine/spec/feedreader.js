@@ -79,24 +79,67 @@ $(function() {
     /* A test suite that tests the initial Feed load. */
     describe('Initial Entries', function() {
 
+        jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
 
-        /* TODO: Write a test that ensures when the loadFeed
+        beforeEach(function(done) {
+            setTimeout(function() {
+                loadFeed(1, done);
+            }, 3000);
+        });
+
+        // TODO delete testcode
+        // console.log("calling loadFeed now..." + performance.now());
+        // // call loadFeed with the first feed 0 or call init();
+        // loadFeed(0, done);
+        // console.log("after calling loadFeed..." + performance.now());
+
+        /* This test ensures when the loadFeed
          * function is called and completes its work, there is at least
          * a single .entry element within the .feed container.
          * Remember, loadFeed() is asynchronous so this test will require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
-
+        it('contain at least a single entry within the .feed-container',
+            function(done) {
+                expect($('.entry-link').length > 0).toBe(true);
+                done();
+            });
     });
 
     /* A test suite that tests the selection of a new feed in the menu. */
     describe('New Feed Selection', function() {
 
+        jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
 
-        /* TODO: Write a test that ensures when a new feed is loaded
+        let content_1, content_2;
+
+        beforeEach(function(done) {
+            setTimeout(function() {
+                loadFeed(1);
+            }, 3000);
+            setTimeout(function() {
+                content_1 = $('.entry-link')[0].innerText;
+            }, 5000);
+            setTimeout(function() {
+                loadFeed(2);
+                content_2 = $('.entry-link')[0].innerText;
+            }, 6000);
+            setTimeout(function() {
+                content_2 = $('.entry-link')[0].innerText;
+                done();
+            }, 9000);
+        });
+
+        /* This test ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
-         * Remember, loadFeed() is asynchronous.
          */
+        it('contains changed content',
+            function(done) {
+                expect(content_1 !== content_2).toBe(true);
+                // TODO delete testcode
+                // console.log($('.entry-link')[0].innerText);
+                done();
+            });
 
     });
 
