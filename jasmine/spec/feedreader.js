@@ -1,10 +1,11 @@
-/* feedreader.js
+/** feedreader.js
  *
  * This is the spec file that Jasmine will read and contains
  * all of the tests that will be run against your application.
  */
 
-/* We're placing all of our tests within the $() function,
+/**
+ * We're placing all of our tests within the $() function,
  * since some of these tests may require DOM elements. We want
  * to ensure they don't run until the DOM is ready.
  */
@@ -81,8 +82,8 @@ $(function() {
 
         jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
 
-        beforeEach(function(done) {
-            setTimeout(function() {
+        beforeEach(done => {
+            setTimeout(() => {
                 loadFeed(1, done);
             }, 3000);
         });
@@ -107,16 +108,16 @@ $(function() {
 
         let firstFeed, secondFeed;
 
-        beforeEach(function(done) {
+        beforeEach(done => {
             setTimeout(function() {
-                loadFeed(1, () => {
+                loadFeed(2, () => {
                     firstFeed = $('.entry-link')[0].innerText;
-                    loadFeed(2, () => {
+                    loadFeed(3, () => {
                         secondFeed = $('.entry-link')[0].innerText;
                         done();
                     });
                 });
-            });
+            }, 3000);
         });
 
         /* This test ensures when a new feed is loaded
