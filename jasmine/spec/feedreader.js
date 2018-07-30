@@ -109,7 +109,6 @@ $(function() {
         let firstFeed, secondFeed;
 
         beforeEach(done => {
-            setTimeout(function() {
                 loadFeed(2, () => {
                     firstFeed = $('.entry-link')[0].innerText;
                     loadFeed(3, () => {
@@ -117,7 +116,6 @@ $(function() {
                         done();
                     });
                 });
-            }, 3000);
         });
 
         /* This test ensures when a new feed is loaded
